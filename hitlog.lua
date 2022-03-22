@@ -48,7 +48,7 @@ local function paint_logs()
         local str = string.format("Hit %s for %s damage (%s health remaining) (flags: %s) (ping: %s)", victim, damage, health, flag, ping)
         local text_x, text_y = draw.GetTextSize(str)
         draw.Color(255, 255, 255, alpha)
-        draw.TextShadow(screen_x / 2 - math.floor(text_x / 2) + x, screen_y / 1.5 + 16 * i, str)
+        draw.Text(screen_x / 2 - math.floor(text_x / 2) + x, screen_y / 1.5 + 16 * i, str)
     end
 end
 
@@ -56,11 +56,11 @@ local function animation()
     for i, v in pairs(logs) do
         if v.delay > globals.RealTime() then
             --move in
-            v.alpha = math.min(v.alpha + globals.FrameTime() * 400, 255)
+            v.alpha = math.min(v.alpha + globals.FrameTime() * 450, 255)
             v.x = math.min(v.x + globals.FrameTime() * 170, 0)
         else
             --move out
-            v.alpha = math.min(v.alpha - globals.FrameTime() * 400, 255)
+            v.alpha = math.min(v.alpha - globals.FrameTime() * 450, 255)
             v.x = math.min(v.x + globals.FrameTime() * 170, 50)
             if v.alpha <= 0 then
                 table.remove(logs, i)
