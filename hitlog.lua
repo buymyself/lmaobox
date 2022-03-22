@@ -56,12 +56,12 @@ local function animation()
     for i, v in pairs(logs) do
         if v.delay > globals.RealTime() then
             --move in
-            v.alpha = math.min(v.alpha + globals.FrameTime() * 240, 255)
-            v.x = math.min(v.x + globals.FrameTime() * 100, 0)
+            v.alpha = math.min(v.alpha + globals.FrameTime() * 400, 255)
+            v.x = math.min(v.x + globals.FrameTime() * 170, 0)
         else
             --move out
-            v.alpha = math.min(v.alpha - globals.FrameTime() * 240, 255)
-            v.x = math.min(v.x + globals.FrameTime() * 100, 50)
+            v.alpha = math.min(v.alpha - globals.FrameTime() * 400, 255)
+            v.x = math.min(v.x + globals.FrameTime() * 170, 50)
             if v.alpha <= 0 then
                 table.remove(logs, i)
             end
