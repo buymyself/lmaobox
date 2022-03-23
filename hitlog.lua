@@ -73,5 +73,5 @@ local function draw_cb()
     animation()
 end
 
-callbacks.Register("FireGameEvent", handle_events)
-callbacks.Register("Draw", draw_cb)
+callbacks.Register("FireGameEvent", "hitlog_event", handle_events)
+callbacks.Register("Draw", "hitlog_draw", draw_cb)
