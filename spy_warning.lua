@@ -13,15 +13,21 @@ end
 local function paint_spy()
     local players = entities.FindByClass("CTFPlayer")
     local localplayer = entities.GetLocalPlayer()
+  
     for i, v in pairs(players) do
+    
         local team = v:GetPropInt("m_iTeamNum")
         if v == localplayer or team == localplayer:GetPropInt("m_iTeamNum") then goto continue end
         local player_class = v:GetPropInt("m_iClass")
+    
         if player_class ~= 8 then goto continue end
+    
         local spy_origin = v:GetAbsOrigin()
         local local_origin = localplayer:GetAbsOrigin()
         local spy_distance = vector.Distance(spy_origin, local_origin)
+    
         if spy_distance > 350 then goto continue end
+    
         draw.SetFont(font_calibri)
         local str = string.format("A spy is nearby! - %s[%s]", v:GetName(), math.floor(spy_distance))
         local text_x, text_y = draw.GetTextSize(str)
