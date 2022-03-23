@@ -2,7 +2,6 @@
   author:pred#2448
 
   For LMAOBOX.net
-  sry for messy shit script
 ]]
 local screen_x, screen_y = draw.GetScreenSize()
 local font_calibri = draw.CreateFont("calibri", 20, 20)
