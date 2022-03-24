@@ -4,20 +4,22 @@
     for LMAOBOX.net.
 ]]
 
-local font_verdana = draw.CreateFont("verdana", 14, 510)
+local font_verdana = draw.CreateFont("verdana", 14, 510) --font
 local screen_x, screen_y = draw.GetScreenSize()
-local logs = {}
+local logs = {} --log queue
 
 local function handle_events(ev)
     if ev:GetName() ~= "player_hurt" then return end
+    
     local localplayer = entities.GetLocalPlayer()
     local victim_entity = entities.GetByUserID(ev:GetInt("userid"))
     local attacker_entity = entities.GetByUserID(ev:GetInt("attacker"))
     local victim_remains = ev:GetInt("health")
     local vitcim_dmg = ev:GetInt("damageamount")
-    local vitcim_ping = entities.GetPlayerResources():GetPropDataTableInt("m_iPing")[victim_entity:GetIndex()]
+    local vitcim_ping = entities.GetPlayerResources():GetPropDataTableInt("m_iPing")[victim_entity:GetIndex()] --gets victim's ping
     local is_crit = ev:GetString("crit")
     local is_minicrit = ev:GetString("minicrit")
+    
     if attacker_entity ~= localplayer then return end
     local crit_flag = is_crit and "C" or ""
     local mcrit_flag = is_minicrit and "M" or ""
@@ -73,5 +75,6 @@ local function draw_cb()
     animation()
 end
 
+--handles callbacks
 callbacks.Register("FireGameEvent", "hitlog_event", handle_events)
 callbacks.Register("Draw", "hitlog_draw", draw_cb)
