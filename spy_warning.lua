@@ -1,5 +1,5 @@
 --[[
-  author:pred#2448
+  github: mcdonaldsfan
 
   For LMAOBOX.net
 ]]
